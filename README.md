@@ -1,0 +1,1 @@
+This repository has the execises and examples of me learning rust from their official website
