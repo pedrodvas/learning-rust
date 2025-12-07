@@ -1,0 +1,2 @@
+rustc {rust file}
+    compiles the file

@@ -1,0 +1,59 @@
+cargo
+    rust dependency manager
+
+rust pattern uses underscore
+
+rust works just like c, after the compilation the first
+function to be run is always the fn main 
+
+all functions that use {name}! are actually macros
+
+fn syntax declares a new function
+
+String::new(); function that returns a new instance of a string
+by default strings is a growable utf 8 encoded text
+
+we can also use functions from std without importing it
+by using std::{use of the function}
+
+just like variables, references are immutable by default
+
+the read_line method writes the input into the string that was passed,
+however it also returns an Enumeration called Result, that can be either
+{Ok} or {Err}
+this enumeration type has its associated methods, for example the 
+expect one. If expect receives {Err}, it crashes the program and
+displays the message is its argument, otherwise it just returns the
+value that Ok is referring to.
+
+the println! macro works like fstrings in python, however for expressions
+you have to use {}. For example:
+println!("x é {x} e x² é {}", x*x)
+
+crates are the smallest unit of code that rust compiler
+accepts, can be either a program or a library
+
+When an external dependency is added, cargo fetches the
+latest version of everything from crates.io, which is where
+people upload their open source projects to.
+
+when you build a project for the first time, the cargo lock
+specifies the versions of the dependencies that match your
+project. This ensures that the version of the dependency you
+use won't change unless you do so.
+
+let secret_number = rand::thread_rng().gen_range(1..=100);
+the first part, rng::thread_rng gives us a random number
+generator that is local to the thread and seeded by the OS.
+The next part uses the expression to create a number between
+1 and 100 (inclusive).
+
+rust usually defaults numbers to i32
+
+when using .parse() to convert from one type to another
+rust uses the type from the variable to do so.
+for example
+let abc: u32 = ....parse();
+rust will look at the u32 and try to parse it that way
+additionally, it returns a Result type just like
+io::stdin().read_line()

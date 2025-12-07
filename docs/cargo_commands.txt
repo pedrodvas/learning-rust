@@ -1,0 +1,26 @@
+cargo new get-dependencies
+    installs some dependencies beyond the std lib
+
+cargo new {name}
+    creates a new rust project
+
+cargo build
+    builds the current project
+    --release optimizes the code but builds slower
+
+cargo run
+    builds and runs project in one command
+    only recompiles the necessary files
+
+cargo check
+    checks if the current project can be built,
+    but does not do so
+
+cargo update
+    updates your libs according to specifier 0.8.5 = ^0.8.5
+    which is any version bigger than that but smaller than
+    0.9.0
+
+cargo doc --open
+    gives you the documentation for the dependencies that
+    are in use in your project.

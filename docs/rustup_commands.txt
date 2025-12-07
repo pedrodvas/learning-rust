@@ -1,0 +1,6 @@
+rustup update
+    updates current version of rust
+
+rustup doc
+    opens the documentation
+

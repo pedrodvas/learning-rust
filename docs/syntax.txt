@@ -1,0 +1,21 @@
+Expressions end in ;
+
+fn () {} declares a new function
+
+let creates a new variable, by default variables are immutable
+which means that after a value is given, the variable won't change
+in order to make a variable mutable, add mut before the declaration
+immutable variable:
+let apples = 5;
+mutable variable:
+let mut guess = String::new();
+
+using the example above, :: indicates that new is a function associated
+to the String type
+
+match {expression} {
+    {option1} => {result1},
+    option2...
+}
+
+loop {}
