@@ -19,3 +19,63 @@ match {expression} {
 }
 
 loop {}
+
+const {name usually in caps}: {type} = {expression}
+constants are always immutable and type annotated
+they can not use expressions that are evaluated during
+runtime
+
+you can also use {number}{type} to declare an int,
+just like 57u8.
+
+booleans are used as 
+let x = true
+or
+let y: bool = false
+
+tuples declared as
+let tup: (i32, f64, u8) = (500, 6.4, 1);
+the type declaration is not mandatory
+to access tuple values you can use
+let (x, y, z) = tup;
+you can also access its values by using
+let x = tup.{index starting at 0};
+for example
+let x = tup.0;
+the empty tuple is () and is called unit.
+Both its type and its value are () and
+they represent empty value and empty 
+return type. Expressions return the unit
+when they do not return anything else.
+
+arrays are always the same type, and just
+like in C, they have a fixed length. To
+declare an array we use:
+let a = [{value1}, {value2}, ...]; or
+let a: [i32;5] = [1, 2, 3, 4, 5]
+Also like in C, arrays are stored in the
+stack. (Remembre that malloc uses space
+in the heap).
+you can also declare an array with repeated
+values as
+let a = [3; 5]; is equal to
+let a = [3, 3, 3, 3, 3];
+access to arrays elements is equal to C.
+let element = a[0];
+rust also doesn't allow you to access
+indexes greater than array len
+
+functions are defined by
+fn {name}() {expression}
+rust doesn't care where functions are 
+declared, so the code below is valid
+fn f1() {
+    f2();
+}
+fn f2() {}
+the only condition that has to be met
+is that it has to be defined in the scope
+that can be seen by the caller.
+all the parameters are required to be
+type annotaded, like
+fn ({parameter}: {type}, ...) {}

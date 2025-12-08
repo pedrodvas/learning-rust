@@ -57,3 +57,53 @@ let abc: u32 = ....parse();
 rust will look at the u32 and try to parse it that way
 additionally, it returns a Result type just like
 io::stdin().read_line()
+
+even when an expression is supposed to return a result
+when a "continue" shows up it steals the execution and
+skips to the next step
+
+in order to shadow a variable simply redeclare it 
+using let. The let is scope dependent, so if you
+shadow a variable inside of a function, outside it
+it will have the same value as before.
+
+shadowing is useful because you can use it to change the
+type of a variable, which a reassign of a mut varibable 
+cannot do
+
+rust data types belong to two super groups,
+compound and scalar
+
+rust is statically typed, which means it should know the
+name of all variables at compile time. It can infer that 
+based on the value and how we use that
+
+scalars represent a single value, and they can be 
+integers, floats, booleans and chars
+for ints, isize and usize are architectural dependent,
+either 32 or 64 bit
+
+compounds are divided into two main groups,
+tuples and arrays
+one tuple can store multiple types, however
+it cannot grow in size.
+
+parameters are the variables that are passed to
+the function, arguments are the values themselves
+
+Statements are instructions that perform some 
+action and do not return a value.
+Expressions evaluate to a resultant value.
+
+{} this is a scope block. (and also an expression)
+expressions do not have ending semicolons,
+so if you finish what would be an expression with
+a semicolon, you turn it into an statement, making it
+not return any value.
+
+functions must always declare the return type,
+and they return the value of the final expression
+in the body of a function, however you can also
+use the return keyword.
+for example:
+fn returns1 () -> i32 {1}
