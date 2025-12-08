@@ -79,3 +79,22 @@ that can be seen by the caller.
 all the parameters are required to be
 type annotaded, like
 fn ({parameter}: {type}, ...) {}
+
+the if structute is
+if bool_expr {}
+else if bool_expr1{}
+...
+else {}
+
+infinite loop is
+loop {}
+
+while is
+while {}
+
+for is
+for element in collection {}
+
+(n1..n2)
+generates a range including n1
+excluding n2

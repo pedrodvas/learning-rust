@@ -107,3 +107,50 @@ in the body of a function, however you can also
 use the return keyword.
 for example:
 fn returns1 () -> i32 {1}
+
+both for branching (if else) and matching
+the expressions inside the curly brackets are
+called arms
+
+in rust the expression 
+if 3 {}
+is not valid because 3 does not
+resolve to true; the condition must be a bool
+
+because if is an expression, we can use 
+let a = if condition {b} else {c}. It is not
+exactly the same as in C beacuse in C the if
+would behave like an statement. Remember that
+the rust compiler should know the type of a
+variable before compiling, so b and c must be
+of the same type.
+Therefore things like
+if cond {4}
+are valid.
+
+loops are also an expression, and you can
+use break to return a value updated inside
+a loop, just like in the example below
+let result = loop {
+    ...
+    {break return_value;}
+    ...
+};
+if a return is used inside of a loop that is
+inside of a function, in that case the return
+breaks out of the function entirely.
+if you have two loops, you can add labels to
+them so you can specify to which one of them
+your continue or break applies to. For example:
+'outside: loop {
+    ...
+    loop {
+        break 'outside;
+    }
+}
+
+both while and for are expressions, but they
+always return the unit. When possible opt for
+for, because it generates more optimized code
+than while due to not needing to compare to
+the length of the array ate every iteration.
