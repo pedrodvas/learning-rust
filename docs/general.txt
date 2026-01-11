@@ -214,3 +214,34 @@ Passing values to a functions works like assigning old values
 to new variables, if they have the Copy trait they are still
 valid, however if they don't you must assume the value is not
 useful anymore.
+
+Instead of a pointer, a reference is guaranteed to point to
+a valid value of the said type during its lifetime. You use
+it by &var and it helps us use a value without taking
+ownership of it. Just like in C, the opposite of referencing
+is called dereferencing, and it is done via *var.
+Suppose the following
+&var=ref --> var --> val
+When ref goes out of scope, it does not invalidate val
+because it does not have ownership of it. Doing that in rust
+is called *Borrowing*. And when we try to modify something
+that was borrowed, rust throws an error. That is because just
+like variable, references are also immutable by default.
+If we would like to change the value of a reference, we can
+create a variable using
+let mut var = ...;
+let ref = &mut var;
+change(ref);
+however if there is a mutable reference to a value, you can
+have no other references to that value. This makes mutation
+much more controlled, and this prevents data races at compile
+time. You can circunvent that by creating new scopes that
+automatically invalidate mutable references, for example
+let mut var = ...;
+{
+    let ref = &mut var;
+}
+let ref1 = &mut var;
+Rust can also detect if a reference is no longer being used,
+so sometimes a mutable reference will be able to be used 
+"in the same scope" as a immutable reference.

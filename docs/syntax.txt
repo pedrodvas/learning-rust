@@ -103,3 +103,8 @@ literal text is
 let var = "etc";
 string is
 let var = String::from("etc");
+
+a reference to a value is represented by
+&var
+deference is
+*var
