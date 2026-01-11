@@ -245,3 +245,33 @@ let ref1 = &mut var;
 Rust can also detect if a reference is no longer being used,
 so in that case a mutable reference is able to be created
 with no errors thrown.
+
+A slice lets us reference a contiguous sequence of elements
+in a collection. Because it is a kind of a reference, it
+does not have ownership.
+Suppose we want to calculate the first position in which a
+specific character appears in a string, so we write a 
+fn calculate_first_char(&String) -> u32 to do that. In this
+case a problem arises. The return value is not associated with
+the string, so if the string changes the value is not valid
+anymore, and the slice type tries to solve that.
+For this specific case, we have the String Slice:
+let s = String::from("hello world);
+let hello = &s[0..5];
+let hello2 = &s[..5]; #also valid
+let world = &s[6..11];
+let world2 = &s[6..]; #also valid
+let whole = &s[..]; #slices the whole string
+#the last index is exclusive
+Because now we are dealing with references instead of ints,
+the compiler now is able to evaluate when these references are
+valid.
+Now that we have seen slices, the string literal, for example
+let s = "abdeogs";
+has the type &str, which is the same as the slice!
+This way, when passing Strings to a function, if they do not
+mutate we can set &str as the argument of the function
+and use slices of the String type to make the function more
+generic.
+Slices for other kinds of variables, just like ints,
+works exactly the same.

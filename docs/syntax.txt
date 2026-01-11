@@ -108,3 +108,6 @@ a reference to a value is represented by
 &var
 deference is
 *var
+
+slice can be written as
+let slice = &mem[start..end];
