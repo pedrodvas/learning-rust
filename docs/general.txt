@@ -154,3 +154,63 @@ always return the unit. When possible opt for
 for, because it generates more optimized code
 than while due to not needing to compare to
 the length of the array ate every iteration.
+
+basics of ownership:
+ - each value has an owner
+ - only one owner at a time
+ - when the owner goes out of scope,
+the value will be dropped
+
+variables are valid from where they were
+declared until the end of the current scope
+
+the contents of the string data type 
+is stored in the heap, due to its size
+not being known at compile time. It is
+managed by the String type. It is slower than
+literal texts (let a = "abc...";).
+The basic structure of a string is
+- a pointer to the heap with the text
+- a len
+- a capacity
+that means when 
+let a = String...
+let b = a
+only the basic structure is copied, the
+contents in the heap are not. To deal with
+"double free" errors, the a variable is invalidaded,
+so each piece in the memory only has one owner.
+Because of that if we try to use a after b is created
+we will get an error (invalidaded reference).
+Therefore, what actually happens is the stack data
+being *moved* from a to b.
+Because of that, rust will never actually do
+deep copies naturally (copying data and pointers)
+
+instead of having a garbage collector or
+demanding the programmer to manage the memory
+rust returns the memory once the variable
+that owns it goes out of scope. When that happens,
+rust calls a special function called drop that 
+manages the memory by itself. This is very similar
+to a pattern in C++ called RAII
+=> Resource Acquisition is Initialization
+
+When you reassing a value to a variable, drop is
+also called, but this time drop is called to get
+rid of the old value that was stored.
+
+Rust has a special annotation called the Copy trait,
+and it is destined to variables that are stored on the
+stack. If a type implements the Copy trait, the variables
+that use that type are not moved, but always copied. That
+makes them valid after a new variable has an assignment made.
+A type cannot have both the Drop and the Copy traits. That is
+because it's like we're trying to make a value both valid
+and unvalid after another variable used it, also, copy
+assumes the value is on the stack and drop assumes it it
+one the heap.
+Passing values to a functions works like assigning old values
+to new variables, if they have the Copy trait they are still
+valid, however if they don't you must assume the value is not
+useful anymore.
