@@ -243,5 +243,5 @@ let mut var = ...;
 }
 let ref1 = &mut var;
 Rust can also detect if a reference is no longer being used,
-so sometimes a mutable reference will be able to be used 
-"in the same scope" as a immutable reference.
+so in that case a mutable reference is able to be created
+with no errors thrown.
